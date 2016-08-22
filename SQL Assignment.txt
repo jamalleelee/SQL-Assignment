@@ -1,0 +1,179 @@
+Teachers in table
+
+INSERT INTO `so_much_sql`.`teacher`
+(`first_name`,
+`last_name`,
+`age`,
+`salary`)
+VALUES
+('John','Smith','35','35000'),
+('Jill','Urban','27','50000'),
+('Jake','Sobbs','35','45000');
+
+Classes in table
+
+INSERT INTO `so_much_sql`.`class`
+(`name`,
+`description`,
+`teacher_id`)
+VALUES
+('Bio','Biology 101','1'),
+('Chem','Chemistry 101','1'),
+('Music','Trumpet 101','2'),
+('Gym','Dont Be Lazy Class','2'),
+('Java','Java 101','3'),
+('SQL','Learning SQL 101','3');
+SELECT * FROM so_much_sql.teacher;
+
+
+Students in table
+
+INSERT INTO `so_much_sql`.`student`
+(`first_name`,
+`last_name`,
+`grade`,
+`gpa`)
+VALUES
+('Billy','Bob','3','2.54'),
+('Bobby','Ricky','2','3.54'),
+('Sally','Mae','1','4.00'),
+('June','July','3','2.42'),
+('Sam','Dean','4','3.68'),
+('Eric','Pocket','4','4.00'),
+('Chris','Topher','2','3.99'),
+('Paulie','Wantacracker','1','3.84'),
+('Riley','Boondock','2','2.73'),
+('Kim','Dog','0','0.89');
+SELECT * FROM so_much_sql.class;
+
+Students in Classes
+
+INSERT INTO `so_much_sql`.`class_student`
+(`class_id`,
+`student_id`)
+VALUES
+('1','1'),
+('3','1'),
+('6','1'),
+('2','2'),
+('5','2'),
+('1','2'),
+('2','3'),
+('5','3'),
+('3','3'),
+('4','4'),
+('6','4'),
+('2','4'),
+('1','5'),
+('4','5'),
+('5','6'),
+('6','6'),
+('3','7'),
+('2','7'),
+('1','7'),
+('5','8'),
+('6','9'),
+('5','9'),
+('3','10'),
+('4','10');
+SELECT * FROM so_much_sql.student;
+
+SELECT all teachers
+
+SELECT `teacher`.`teacher_id`,
+    `teacher`.`first_name`,
+    `teacher`.`last_name`,
+    `teacher`.`age`,
+    `teacher`.`salary`
+FROM `so_much_sql`.`teacher`;
+SELECT * FROM so_much_sql.teacher;
+
+SELECT all classes
+
+SELECT `class`.`class_id`,
+    `class`.`name`,
+    `class`.`description`,
+    `class`.`teacher_id`
+FROM `so_much_sql`.`class`;
+
+SELECT all students
+
+SELECT `student`.`student_id`,
+    `student`.`first_name`,
+    `student`.`last_name`,
+    `student`.`grade`,
+    `student`.`gpa`
+FROM `so_much_sql`.`student`;
+
+
+SELECT all classes for teacher 1
+
+SELECT `class`.`class_id`,
+    `class`.`name`,
+    `class`.`description`,
+    `class`.`teacher_id`
+FROM so_much_sql.class
+WHERE teacher_id='1';
+
+
+
+SELECT all students for class 1
+
+SELECT `class_student`.`class_student_id`,
+    `class_student`.`class_id`,
+    `class_student`.`student_id`
+FROM `so_much_sql`.`class_student`
+WHERE class_id='1';
+
+
+
+SELECT all classes for student 1
+
+SELECT `class_student`.`class_student_id`,
+    `class_student`.`class_id`,
+    `class_student`.`student_id`
+FROM `so_much_sql`.`class_student`
+WHERE student_id='1';
+
+
+
+SELECT all students who's first name starts with S
+
+SELECT `student`.`student_id`,
+    `student`.`first_name`,
+    `student`.`last_name`,
+    `student`.`grade`,
+    `student`.`gpa`
+FROM `so_much_sql`.`student`
+WHERE first_name LIKE's%';
+
+UPDATE teacher 1's name to Superman
+
+UPDATE `so_much_sql`.`teacher`
+SET
+`first_name` = 'Super',
+`last_name` = 'Man'
+WHERE `teacher_id` = '1';
+
+Update class 1's name to Underwater Basket Weaving
+
+UPDATE `so_much_sql`.`class`
+SET
+`name` = 'Underwater Basket Weaving'
+WHERE `class_id` ='1';
+SELECT * FROM so_much_sql.teacher;
+
+Update Student 1's name to Wonder Woman
+
+UPDATE `so_much_sql`.`student`
+SET
+`first_name` = 'Wonder',
+`last_name` = 'Woman'
+WHERE `student_id` = '1';
+SELECT * FROM so_much_sql.student;
+
+DELETE student 10
+
+DELETE FROM `so_much_sql`.`student`
+WHERE student_id='10';
+SELECT * FROM so_much_sql.student;
